@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <style>
+        * {
+            background: snow;
+            font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+        }
+        input {
+            font-size: 30px;
+        }
+        a {
+            text-decoration: none;
+            color: darkgreen;
+        }
+        a:hover {
+            color: orange;
+        }
+        input[type="submit"]:hover {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <form method="get" action="/search">
+        <input type="text" name="query" value="Google"/>
+        <input type="submit" value="SEARCH"/>
+    </form>
+</body>
+</html>
