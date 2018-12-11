@@ -91,7 +91,7 @@ class Search(models.Model):
         x1 = 0.6
         x2 = 0.4
 
-        google_serp_weight = 5 * (x1 * len(google_results_list) / unique_alt_count
+        google_serp_weight = 8 * (x1 * len(google_results_list) / unique_alt_count
                                   + x2 * len(google_results_list) / total_alt_count)
         contextual_weight = 2 * (x1 * len(contextual_results_list) / unique_alt_count
                                  + x2 * len(contextual_results_list) / total_alt_count)
@@ -99,12 +99,13 @@ class Search(models.Model):
                            + x2 * len(bing_results_list) / total_alt_count)
         faroo_weight = 3 * (x1 * len(faroo_results_list) / unique_alt_count
                             + x2 * len(faroo_results_list) / total_alt_count)
-        google_ahmed_weight = 4 * (x1 * len(ahmed_results_list) / unique_alt_count
+        google_ahmed_weight = 6 * (x1 * len(ahmed_results_list) / unique_alt_count
                                    + x2 * len(ahmed_results_list) / total_alt_count)
         total_weight = google_serp_weight + contextual_weight + bing_weight + faroo_weight + google_ahmed_weight
         google_serp_weight = google_serp_weight / total_weight
         contextual_weight = contextual_weight / total_weight
         bing_weight = bing_weight / total_weight
+        faroo_weight = faroo_weight / total_weight
         google_ahmed_weight = google_ahmed_weight / total_weight
 
         for i in range(len(google_results_list)):
@@ -146,4 +147,4 @@ class Search(models.Model):
         for key in unified_results.keys():
             if key not in ahmed_results_list:
                 unified_results[key] += len(ahmed_results_list) * google_ahmed_weight
-        return unified_results
+        return unified_results, google_serp_weight, contextual_weight, bing_weight, faroo_weight, google_ahmed_weight

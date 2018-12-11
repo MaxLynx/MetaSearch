@@ -20,7 +20,7 @@ def search(request):
     faroo_results_list = Search.get_faroo_results(query)
     ahmed_results_list = Search.get_ahmed_results(query)
 
-    unified_results = Search.get_unified_results(google_results_list, contextual_results_list, bing_results_list, faroo_results_list, ahmed_results_list)
+    unified_results, google_serp_weight, contextual_weight, bing_weight, faroo_weight, google_ahmed_weight = Search.get_unified_results(google_results_list, contextual_results_list, bing_results_list, faroo_results_list, ahmed_results_list)
 
     context = {
         'query': query,
@@ -29,6 +29,11 @@ def search(request):
         'bing_results_list': bing_results_list,
         'faroo_results_list': faroo_results_list,
         'ahmed_results_list': ahmed_results_list,
-        'unified_results': sorted(unified_results.items(), key=operator.itemgetter(1))
+        'unified_results': sorted(unified_results.items(), key=operator.itemgetter(1)),
+        'google_serp_weight': google_serp_weight,
+        'contextual_weight': contextual_weight,
+        'bing_weight': bing_weight,
+        'faroo_weight': faroo_weight,
+        'google_ahmed_weight': google_ahmed_weight
     }
     return render(request, 'metasearcher/results.html', context)

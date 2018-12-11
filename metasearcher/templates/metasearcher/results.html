@@ -34,23 +34,23 @@
     <a href="{{key}}">{{key}}</a><strong> ({{value|floatformat:1}})</strong><br>
     {% endfor %}
 
-    <h2>Google SERP API:</h2>
+    <h2>Google SERP API (w={{google_serp_weight|floatformat:2}}):</h2>
     {% for result in google_results_list%}
     <a href="{{result}}">{{result}}</a><br>
     {% endfor %}
-    <h2>Google Custom Search:</h2>
+    <h2>Google Custom Search (w={{google_ahmed_weight|floatformat:2}}):</h2>
     {% for result in ahmed_results_list%}
     <a href="{{result}}">{{result}}</a><br>
     {% endfor %}
-    <h2>Contextual Web Search:</h2>
+    <h2>Contextual Web Search (w={{contextual_weight|floatformat:2}}):</h2>
     {% for result in contextual_results_list%}
     <a href="{{result}}">{{result}}</a><br>
     {% endfor %}
-    <h2>Bing:</h2>
+    <h2>Bing (w={{bing_weight|floatformat:2}}):</h2>
     {% for result in bing_results_list%}
     <a href="{{result}}">{{result}}</a><br>
     {% endfor %}
-    <h2>Faroo:</h2>
+    <h2>Faroo (w={{faroo_weight|floatformat:2}}):</h2>
     {% for result in faroo_results_list%}
     <a href="{{result}}">{{result}}</a><br>
     {% endfor %}
