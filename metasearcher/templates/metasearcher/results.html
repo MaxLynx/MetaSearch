@@ -11,6 +11,9 @@
         input {
             font-size: 30px;
         }
+        select {
+            font-size: 15px;
+        }
         a {
             text-decoration: none;
             color: darkgreen;
@@ -26,12 +29,18 @@
 <body>
     <form method="get" action="/search">
         <input type="text" name="query" value="{{query}}"/>
+        <select size="4" name="method">
+            <option selected value="borda_quality">Borda count with quality weights</option>
+            <option value="borda_stats">Borda count with statistical weights</option>
+            <option value="condorcet_quality">Condorcet method with quality weights</option>
+            <option value="condorcet_stats">Condorcet method with statistical weights</option>
+        </select>
         <input type="submit" value="SEARCH"/>
     </form>
     <br>
     <h2>Ranked Results:</h2>
     {% for key, value in unified_results %}
-    <a href="{{key}}">{{key}}</a><strong> ({{value|floatformat:1}})</strong><br>
+    <a href="{{key}}">{{key}}</a><strong> ({{value|floatformat:2}})</strong><br>
     {% endfor %}
 
     <h2>Google SERP API (w={{google_serp_weight|floatformat:2}}):</h2>

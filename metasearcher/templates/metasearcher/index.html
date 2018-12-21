@@ -11,6 +11,9 @@
         input {
             font-size: 30px;
         }
+        select {
+            font-size: 15px;
+        }
         a {
             text-decoration: none;
             color: darkgreen;
@@ -26,6 +29,12 @@
 <body>
     <form method="get" action="/search">
         <input type="text" name="query" value="Google"/>
+        <select size="4" name="method">
+            <option selected value="borda_quality">Borda count with quality weights</option>
+            <option value="borda_stats">Borda count with statistical weights</option>
+            <option value="condorcet_quality">Condorcet method with quality weights</option>
+            <option value="condorcet_stats">Condorcet method with statistical weights</option>
+        </select>
         <input type="submit" value="SEARCH"/>
     </form>
 </body>
